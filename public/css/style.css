@@ -5093,3 +5093,86 @@ ul {
 .text-orange-red {
   color: #ff0000;
 }
+/* Alert styling */
+
+.alert{
+  width: 300px;
+  background-color: #fff;
+  height: 75px;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  position: absolute;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  transform: translateX(-100px);
+  opacity: 0;
+  transform-origin: left;
+  transition: all .8s;
+
+  position: fixed;
+  top: 80;
+  z-index: 500;
+}
+
+.alert.active{
+  transform: translateX(0px);
+  opacity: 1;
+}
+
+/* .alert:nth-child(n-1){
+  margin-bottom: 30px;
+} */
+
+.alert::before{
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.alert.success::before{
+  background-color: #4BB543;
+}
+.alert.success p{
+  color: #357b30 ;
+}
+.alert.success .icon{
+  background-color: #4BB543;
+}
+
+.alert.info::before{
+  background-color: #646FD4;
+}
+.alert.info p{
+  color: #2a2f5c ;
+}
+.alert.info .icon{
+  background-color: #646FD4;
+}
+
+.alert.warning::before{
+  background-color: #FF8D29;
+}
+.alert.warning p{
+  color: #e47f26 ;
+}
+.alert.warning .icon{
+  background-color: #FF8D29;
+}
+.alert.error::before{
+  background-color: #F32424;
+}
+.alert.error p{
+  color: #F32424 ;
+  z-index: 502;
+}
+.alert.error .icon{
+  background-color: #F32424;
+}
+.alert p {
+  margin-left: 5%;
+  font-weight: 500;
+}

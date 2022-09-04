@@ -39,6 +39,26 @@
 </head>
 
 <body>
+    <!-- Alerts -->
+
+    <div class="container" style="position: absolute; z-index: 999;">
+        <div id="success" class="alert success" >
+            <ion-icon class="icon" name="checkmark-done-outline"></ion-icon>
+            <p class="alertMessage">Success Alert Message</p>
+        </div>
+        <!-- <div id="info" class="alert info" >
+            <ion-icon class="icon" name="help-outline"></ion-icon>
+            <p>Information Alert Message</p>
+        </div>
+        <div id="warning" class="alert warning" >
+            <ion-icon class="icon" name="information-outline"></ion-icon>
+            <p>Warning Alert Message</p>
+        </div> -->
+        <div id="error" class="alert error" >
+            <ion-icon class="icon" name="bug-outline"></ion-icon>
+            <p class="alertMessage"></p>
+        </div>
+    </div>
     <!-- Preloader Start Here -->
     <!-- <div id="preloader"></div> -->
     <!-- Preloader End Here -->
@@ -280,6 +300,7 @@
 
 getDB()
     </script>
+    <script src="/js/alerts.js"></script>
     <script src="/chartjs/index.js"></script>
     <script src="/js/displayTransaction.js"></script>
     <script src="/js/edit_delete.js"></script>
