@@ -1,8 +1,7 @@
 $(()=>{
 
-
-
-
+let alerts = document.getElementsByClassName('alert')
+let alertMessage = document.getElementsByClassName('alertMessage')
 let displayTransaction = document.querySelector(".transaction-appendhere");
 
 //! DOUGHNUT CHART START
@@ -397,13 +396,32 @@ const getTransactionRecord = async () =>{
             // console.log(e.target.name);
             // console.log(e);
             let rowID = e.target.name;
+
             //make api fetch call to delete the record
-            let deleteItem = await fetch('http://localhost:3000/api', {
-                method: "DELETE",
-                headers: {'Content-type': 'application/json; charset=UTF-8'},
-                body: JSON.stringify({rowID})
-            } )
-            getTransactionRecord()
+            try {
+                let deleteItem = await fetch('http://localhost:3000/api', {
+                    method: "DELETE",
+                    headers: {'Content-type': 'application/json; charset=UTF-8'},
+                    body: JSON.stringify({rowID})
+                } )
+
+                getTransactionRecord()
+
+                alertMessage[0].innerHTML = 'Transaction removed'
+                alerts[0].classList.toggle('active')
+                setTimeout(() => {
+                    alerts[0].classList.toggle('active')
+                    alertMessage[0].innerHTML = ''
+                }, 2000)
+
+            } catch (error) {
+                alertMessage[1].innerHTML = 'Unable to remove transaction'
+                alerts[1].classList.toggle('active')
+                setTimeout(() => {
+                    alerts[1].classList.toggle('active')
+                    alertMessage[1].innerHTML = ''
+                }, 2000)
+            }
         })
     })
 
@@ -421,11 +439,30 @@ const getTransactionRecord = async () =>{
 
             $('#exampleModal').modal('show')
 
-            let editItem = await fetch('http://localhost:3000/api', {
+            try {
+                let editItem = await fetch('http://localhost:3000/api', {
                 method: "PUT",
                 headers: {'Content-type': 'application/json; charset=UTF-8'},
                 body: JSON.stringify({date, description, amount, type, category, rowID})
-            })
+                })
+                
+                getTransactionRecord()
+
+                alertMessage[0].innerHTML = 'Transaction changed'
+                alerts[0].classList.toggle('active')
+                setTimeout(() => {
+                    alerts[0].classList.toggle('active')
+                    alertMessage[0].innerHTML = ''
+                }, 2000)
+
+            } catch (error) {
+                alertMessage[1].innerHTML = 'Unable to edit transaction'
+                alerts[1].classList.toggle('active')
+                setTimeout(() => {
+                    alerts[1].classList.toggle('active')
+                    alertMessage[1].innerHTML = ''
+                }, 2000)
+            }
         })
 
     })
